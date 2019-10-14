@@ -1,0 +1,12 @@
+<maps></maps>
+<menu-items city="city" count="count"></menu-items>
+<hr>
+<div class="container" >
+    <div class="row" ng-repeat= "w in weatherResult.list">
+        <div class="col-md-12">
+            <weather-report weather-day="w" convert-to-celcius="convertToCelcius(degInKelvin)" 
+            convert-to-date="convertToDate(dt)" date-format="dd - MMMM - yyyy" 
+            time-format="hh:mm:ss : a"></weather-report> 
+        </div>
+    </div>
+</div>

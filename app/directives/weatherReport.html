@@ -1,0 +1,15 @@
+<div class="card" style="position:relative; z-index: 1; opacity: 0.80">
+    <div class="card-header">
+        <span class="card-title">
+            {{convertToDate({ dt :weatherDay.dt }) | date: dateFormat}}
+        </span>
+        <span class="card-subtitle ">
+            {{convertToDate( { dt :weatherDay.dt}) | date: timeFormat}}
+        </span>
+    </div>
+    <div class="card-block">
+        <span class="col-md-6">Weather Report: {{ weatherDay.weather[0].main }}</span><br>
+        <span class="col-md-6">Weather Description: {{ weatherDay.weather[0].description }}</span><br>
+        <span class="col-md-6">Max Tempature: {{ convertToCelcius( { degInKelvin: weatherDay.main.temp_max } )}} </span>
+    </div>
+</div>

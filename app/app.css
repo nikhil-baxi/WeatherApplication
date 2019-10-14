@@ -1,0 +1,56 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.input-icons i { 
+  display: inline-flex;
+  position: relative;
+  border: outset; 
+} 
+
+.input-icons { 
+  width: 100%; 
+  display: inline-flex;
+} 
+
+.fa {
+  padding: 8px;
+  min-width: 40px; 
+}
+
+#newCitySuggestion {
+  position: relative;
+  z-index:1;
+  border-block-color: black;
+  background-color: white;
+  border-style: outset;
+  opacity: 0.70;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+/* .mapboxgl-ctrl-geocoder { min-width:100%; } */
