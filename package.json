@@ -30,7 +30,7 @@
     "protractor": "^5.4.2"
   },
   "scripts": {
-    "postinstall": "ng build --prod",
+    "postinstall": "npm run copy-libs",
     "update-deps": "npm update",
     "postupdate-deps": "npm run copy-libs",
     "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
