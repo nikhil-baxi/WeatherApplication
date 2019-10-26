@@ -16,7 +16,8 @@ weatherApp.service('weatherService', ['$resource', 'cityService', function($reso
        q: cityService.city, 
        cnt: cityService.count,
        lat: cityService.lat,
-       lon: cityService.lat
+       lon: cityService.lat,
+       units: "metric"
       }).$promise
   };
 
@@ -38,7 +39,8 @@ weatherApp.service('mapsService', function(weatherService){
       container: 'map',
       style: 'mapbox://styles/mapbox/outdoors-v11',
       center: [lon, lat], // starting position [lon, lat] lat: 40.7306, lon: -73.9867
-      zoom: 8, // starting zoom
+      zoom: 10, // starting zoom
+      // pitch: 100,
       interactive: true,
       accessToken: accessToken
     })
@@ -53,6 +55,12 @@ weatherApp.service('mapsService', function(weatherService){
     return {
       map: map.addControl(geoLocate)
     }
+  }
+  this.flyTo = function(newLon, newLat){
+    console.log('new dat' + newLon + ',' + newLat)
+    map.flyTo({
+      center: [newLon, newLat]
+    })
   }
   // console.log(this.map( -73.9867, 40.7306 ); 
 })

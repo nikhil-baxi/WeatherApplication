@@ -1,6 +1,6 @@
 //controlers
-weatherApp.controller('homeController', ['$scope', '$resource', 'cityService', 'mapsService',
-  function ($scope, $resource, cityService, mapsService) {
+weatherApp.controller('homeController', ['$scope', '$resource', '$timeout', 'cityService', 'mapsService',
+  function ($scope, $resource, $timeout, cityService, mapsService) {
     $scope.city = cityService.city;
     $scope.map = mapsService.map(cityService.lat, cityService.lon);
 
@@ -25,18 +25,13 @@ weatherApp.controller('homeController', ['$scope', '$resource', 'cityService', '
     })
     
     $scope.itemClicked = function (data){
-      console.log('clicked: ' + data);
-      
-      // $scope.map = mapsService.map.flyTo({
-      //   center: data,
-      //   zoom: '13'
-      // })
-
+      console.log('clicked: ');
+      console.log(data);
       $scope.city = cityService.city = data.place_name;
       $scope.lon = cityService.lon = data.center[0]; 
-      $scope.lat = cityService.lat = data.center[1]
-      $scope.map = mapsService.map(data.center[0], data.center[1]);
+      $scope.lat = cityService.lat = data.center[1];
 
+      $scope.map = mapsService.flyTo(data.center[0], data.center[1])
     }
   }
 ]);
@@ -85,7 +80,7 @@ weatherApp.controller('forecastGraphController', ['$scope', '$routeParams', '$fi
           if (elel == 'dt') {
             var date = new Date();
             date.setDate(data[el][elel])
-            label.push($filter('date')($filter('convertToDate')(data[el][elel]), 'yyyy-MM-dd hh:mm:ss a'));
+            label.push($filter('date')($filter('convertToDate')(data[el][elel]), 'hh:mm a'));
           }
           if (elel == 'main') {
             max_temp.push(data[el][elel]['temp_max']);
@@ -97,24 +92,26 @@ weatherApp.controller('forecastGraphController', ['$scope', '$routeParams', '$fi
     })
 
     $scope.data = {
+      type: 'bar',
       labels: label,
       datasets: [
         {
           label: "humudity",
-          backgroundColor: 'rgba(255, 206, 86, 1)',
-          borderColor: 'rgba(255, 206, 86, 1)',
-          data: humidity
+          // backgroundColor: 'rgba(255, 206, 86, 1)',
+          borderColor: 'red',
+          data: humidity,
+          type: 'line'
         },
         {
           label: "min temp",
-          backgroundColor: 'rgba(75, 192, 192, 1)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'blue',
+          borderColor: 'blue',
           data: min_temp
         },
         {
           label: "max temp",
-          backgroundColor: 'rgba(255, 99, 132, 1)',
-          borderColor: 'rgba(255,99,132,1)',
+          backgroundColor: 'rgba(255, 206, 86, 1)',
+          borderColor: 'rgba(255,206,86,1)',
           data: max_temp
         }
       ]
@@ -123,6 +120,7 @@ weatherApp.controller('forecastGraphController', ['$scope', '$routeParams', '$fi
     $scope.options = {
       scales: {
         xAxes: [{
+          label: {fontColor: 'red'},
           ticks: {
             beginAtZero: true
           },

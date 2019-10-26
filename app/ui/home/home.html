@@ -1,5 +1,5 @@
 <div>
-    <maps></maps>
+    <!-- <maps></maps> -->
     <div class='row'  style="position: 'relative'; top:'20px'; z-index: '100'">
         <div class="col-md-6 offset-md-3">
             <h4>Forecast by city</h4>
@@ -8,7 +8,15 @@
                     <input type="search" class="form-control" placeholder="city.." ng-model='city'/>
                     <locate-me-icon ng-click="location()"></locate-me-icon>
                 </div>
-                <div id='newCitySuggestion' ng-model="newCitySuggestion"  ng-repeat="data in newCitySuggestion"  ng-click="itemClicked(data)"> <a href="#!/forecast">{{data.place_name}}</a> </div>
+                    <div 
+                        id='newCitySuggestion' 
+                        ng-model="newCitySuggestion"  
+                        ng-repeat="data in newCitySuggestion"  
+                        ng-click="itemClicked(data)"
+                        > 
+                            <!-- {{data.place_name}} -->
+                            <a href="#!/forecast/6" id="cityLink">{{data.place_name}}</a> 
+                    </div>
                 <geo-coder ng-model="autocomplete"></geo-coder>
             </div>
             <a href="#!/forecast" class="btn btn-primary"> Get Weather Forecast</a>

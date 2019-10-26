@@ -16,6 +16,22 @@ weatherApp.directive('weatherReport', function(){
   }
 })
 
+weatherApp.directive('weatherReportTable', function(){
+  return {
+    restrict: 'E',
+    templateUrl: "directives/weatherReportTable.html",
+    replace: true,
+    scope: {
+      weatherResult: "=",
+      weatherDay: "=",
+      convertToCelcius: "&",
+      convertToDate: "&",
+      dateFormat: "@",
+      timeFormat: "@"
+    }
+  }
+})
+
 weatherApp.directive('menuItems', function(){
   return {
     restrict: 'E',
@@ -31,7 +47,7 @@ weatherApp.directive('menuItems', function(){
 weatherApp.directive('maps', function(){
   return {
     restrict: 'E',
-    template: "<div id='map' style='position: absolute; width: 100%; height: 100%; z-index: 0'> </div>",
+    template: "<div id='map' style='position: absolute; width: 130%; height: 130%; z-index: 0'> </div>",
     replace: true,
     controller: 'mapsController'
   }

@@ -53,4 +53,27 @@ input[type=search]::-webkit-search-cancel-button {
   -webkit-appearance: searchfield-cancel-button;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+span[ng-model=count] {
+  background-color: #343a40;
+  opacity: 0.8;
+  color: white;
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  a:link {
+    color: black;
+  }
+}
 /* .mapboxgl-ctrl-geocoder { min-width:100%; } */

@@ -2,13 +2,12 @@
     <a href="/" style="top: 0;float :right"> Back to search</a>
     <h2>Weather Forecast for {{ city }} </h2>
     <hr>
-    <span mg-model='count'> For next
+    <span ng-model='count'> For next
         <a href="#!/forecast/3" ng-class="{'bg-danger': count === '3' }">3</a> |
-        <a href="#!/forecast/5" ng-class="{'bg-danger': count === '5' }">5</a> |
-        <a href="#!/forecast/7" ng-class="{'bg-danger': count === '7' }">7</a>
-
-        <a href="#!/forecastGraphView" style="float :right" class="btn btn-primary">Graph View </a>
-        <a href="#!/forecast/" style="float :right" class="btn btn-primary">List View</a>
+        <a href="#!/forecast/6" ng-class="{'bg-danger': count === '6' }">6</a> |
+        <a href="#!/forecast/9" ng-class="{'bg-danger': count === '9' }">9</a>
         hours
     </span>
+    <a href="#!/forecastGraphView" style="float :right" class="btn btn-primary">Graph View </a>
+    <a href="#!/forecast/6" style="float :right" class="btn btn-primary">List View</a>
 </div>
