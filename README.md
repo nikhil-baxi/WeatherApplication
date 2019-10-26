@@ -15,4 +15,9 @@ to build the application in heroku the package.json should start with
 
 for development work the package.json should start with
 
-"start": ""
+"start": "http-server -a localhost -p 8000 -c-1 ./app"
+
+for deployment the package.json should start with
+
+"start": "node server.js"
+
